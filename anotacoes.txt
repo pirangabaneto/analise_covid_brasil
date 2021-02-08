@@ -1,0 +1,103 @@
+'DF': 278316, OK
+'GO': 353061, OK
+'MT': 218475, OK
+'MS': 162220, OK
+'RS': 551317, OK
+'SC': 581352, OK 
+'PR': 556304, OK
+'AC': 98098, ***************************
+'RO': 253532, **********************
+'RR': 148734, *********************
+'PA': 662326, ******************
+'AM': 390428, ***********************
+'TO': 205580, **********************
+'AP': 155458, ****************
+'AL': 237482, *******************
+'BA': 1185540, ****************
+'PB': 386930, ******************
+'CE': 750048, ****************
+'SE': 277222 ******************
+'PI': 319482, ************
+'MA': 416396, **************
+'RN': 282502, ************
+'PE': 527444, ***********
+'SP': 1835585, ok
+'ES': 593084, ********************
+'RJ': 1052552, **********
+'MG': 1481944, ********** 
+-----------------------------------------------------------
+'BA': 569550,OK
+'DF': 278316, OK 
+'PR': 556304,OK 
+'RR': 72382, OK
+'RS': 551317,OK 
+'PB': 179912, OK
+'TO': 102507, OK 
+'PA': 331163, OK
+'PE': 250527, OK
+'RN': 136967, OK
+'PI': 158529,OK 
+'RJ': 518366, OK
+'AC': 49049, OK
+'AM': 119251, OK (TA FALTANDO PQ A PORRA DA BASE TINHA 1 COLUNA A MAISE 500 LINHAS VAZIAS)
+'AL': 114820, OK
+'CE': 362635, OK
+'AP': 77729, OK
+'GO': 353061,OK 
+'ES': 287825, OK
+'MG': 722094, OK
+'RO': 253532,******************* 
+'MA': 207361,OK 
+'SP': 37534, **********************
+'MT': 218475, OK
+'MS': 162220, OK 
+'SC': 581352,OK 
+'SE': 128539 OK
+
+7381317
+
+ 
+  
+
+
+13961412
+
+
+
+
+
+# 3. casosAcumulado - A quantidade de casos acumulados do estado
+def p30(lista_estados, nome, data):
+    result = dict.fromkeys(lista_estados, 0)
+    with open(nome + '.csv') as csv_file:
+        base = csv.reader(csv_file, delimiter=',')
+        for linha in base:
+            if (linha[7] == data):
+                    result[linha[1]] = result[linha[1]] + 1
+        return result
+
+a = p30(estados,'HIST_PAINEL_COVIDBR_02fev2021','2020-12-02')
+print(a)
+print(sum(a.values()))
+
+# 3. casosAcumulado - A quantidade de casos acumulados do estado
+def p31(lista_estados, nome, data):
+    result = dict.fromkeys(lista_estados, 0)
+    usadas = []
+    with open(nome + '.csv') as csv_file:
+        base = csv.reader(csv_file, delimiter=',')
+        estadosCorretos = ['DF','PR', 'RS', 'GO', 'MT', 'MS', 'SC']
+        for linha in base:
+            if (linha[7] == data):
+                #if (linha[1] in estadosCorretos):
+                if (linha[1] =='DF'):
+                    print "sim"
+                    result[linha[1]] = result[linha[1]] + 1
+                else:
+                    #if not linha[2] in cidade_estado[linha[1]]:
+                    if not linha[2] in usadas:
+                        result[linha[1]] = result[linha[1]] + 1#int(linha[10])
+                        #cidade_estado[linha[1]].append(linha[2])
+                        usadas.append(linha[2])
+        #print cidade_estado['DF']#
+        return result

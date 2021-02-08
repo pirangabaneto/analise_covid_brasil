@@ -1,0 +1,4 @@
+graficos pra gerar:
+1. perce3ntual de casos por população do estado
+2. percentual de casos por datas de abertura
+3.datas comemorativas por número de casos
