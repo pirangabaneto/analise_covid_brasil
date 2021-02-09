@@ -6,6 +6,7 @@ import pandas as pd
 from fpdf import FPDF
 import csv
 import operator
+from itertools import product
 
 
 def lerArquivo(nome):
@@ -518,8 +519,10 @@ def gerar_pdf_numero_obitos_pop(data):
     pdf.output("relatorio-num-obitos-pop-"+data+".pdf")
 
 
+"""
 data = raw_input("Data (aaaa-mm-dd): ")
 casosAcumulado = p3(estados, base, data)
+
 obitosAcumulado = p4(estados, base, data)
 percPopCasos = p5(casosAcumulado)
 percPopObitos = p12(obitosAcumulado) #relacao num de obitos - populacao do estado
@@ -544,3 +547,65 @@ gerar_pdf_numero_obitos(data)
 
 gerar_pdf_numero_casos_pop(data)
 gerar_pdf_numero_obitos_pop(data)
+"""
+#4) Feito o ranking dos itens 2 e 3, quais analises podem ser feitas?
+
+#numero de obitos de cada estado no periodo marco-2020 a janeiro-2021:
+datas_analise = ['2020-03-30','2020-04-30','2020-05-30','2020-06-30','2020-07-30','2020-08-30','2020-09-30','2020-10-30',
+                 '2020-11-30','2020-12-30','2021-01-30']
+
+def casosAcumuladosRange():
+    res = []
+    for i in datas_analise:
+        res.append(p3(estados, base, i))
+
+    #escrevendo o csv
+    with open('casos-acumulados-range.csv', 'wb') as file:
+        writer = csv.writer(file)
+
+        # escrevendo o header:
+        header = estados[:]
+        header.insert(0, 'data')
+
+        writer.writerow(header)
+
+        # escrevendo os valores a baixo da linah correspondente
+        cont = 0
+        for data in res:
+            linha = []
+            linha.append(datas_analise[cont])
+            for estado in estados:
+                linha.append(data[estado])
+            writer.writerow(linha)
+            cont = cont + 1
+        # writer.writerow([1, "Linus Torvalds", "Linux Kernel"])
+
+
+def obitosAcumuladosRange():
+    res = []
+    for i in datas_analise:
+        res.append(p4(estados, base, i))
+
+    #escrevendo o csv
+    with open('obitos-acumulados-range.csv', 'wb') as file:
+        writer = csv.writer(file)
+
+        # escrevendo o header:
+        header = estados[:]
+        header.insert(0, 'data')
+
+        writer.writerow(header)
+
+        # escrevendo os valores a baixo da linah correspondente
+        cont = 0
+        for data in res:
+            linha = []
+            linha.append(datas_analise[cont])
+            for estado in estados:
+                linha.append(data[estado])
+            writer.writerow(linha)
+            cont = cont + 1
+        # writer.writerow([1, "Linus Torvalds", "Linux Kernel"])
+
+obitosAcumuladosRange()
+
