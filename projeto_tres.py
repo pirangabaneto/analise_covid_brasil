@@ -519,7 +519,7 @@ def gerar_pdf_numero_obitos_pop(data):
     pdf.output("relatorio-num-obitos-pop-"+data+".pdf")
 
 
-"""
+
 data = raw_input("Data (aaaa-mm-dd): ")
 casosAcumulado = p3(estados, base, data)
 
@@ -547,7 +547,7 @@ gerar_pdf_numero_obitos(data)
 
 gerar_pdf_numero_casos_pop(data)
 gerar_pdf_numero_obitos_pop(data)
-"""
+
 #4) Feito o ranking dos itens 2 e 3, quais analises podem ser feitas?
 
 #numero de obitos de cada estado no periodo marco-2020 a janeiro-2021:
@@ -607,5 +607,33 @@ def obitosAcumuladosRange():
             cont = cont + 1
         # writer.writerow([1, "Linus Torvalds", "Linux Kernel"])
 
-obitosAcumuladosRange()
 
+def perCasosAcumuladosRange():
+    res = []
+    for i in datas_analise:
+        res.append(p5(p3(estados, base, i)))
+
+    #escrevendo o csv
+    with open('per-casos-acumulados-range.csv', 'wb') as file:
+        writer = csv.writer(file)
+
+        # escrevendo o header:
+        header = estados[:]
+        header.insert(0, 'data')
+
+        writer.writerow(header)
+
+        # escrevendo os valores a baixo da linah correspondente
+        cont = 0
+        for data in res:
+            linha = []
+            linha.append(datas_analise[cont])
+            for estado in estados:
+                linha.append(data[estado])
+            writer.writerow(linha)
+            cont = cont + 1
+        # writer.writerow([1, "Linus Torvalds", "Linux Kernel"])
+
+#casosAcumuladosRange()
+#obitosAcumuladosRange()
+#perCasosAcumuladosRange()
