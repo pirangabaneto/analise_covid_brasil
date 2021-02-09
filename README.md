@@ -6,6 +6,8 @@ Orientações:
 
 . Arquivo principal: projeto_tres.py
 
+. Formato de input (data): aaaa-mm-dd
+
 Obs.:
 
 . Foi necessário realizar um pré-processamento na base original:
