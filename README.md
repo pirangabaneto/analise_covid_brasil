@@ -34,7 +34,7 @@ Conclusões:
 
 
 <details>
-  <summary>Análise da distribuição do número de óbtios (págs 8 - 13):</summary>
+  <summary>Análise da distribuição do número de óbtios (págs 8 - 14):</summary>
   
   1. Podemos visualizar que os estados com maior número de óbtios confirmados então entre os estados mais populosos da região (págs 8 - 13);
   2. De forma equivalente, tais estados estão entre os mais populosos de todo o país (pág 14).
@@ -46,4 +46,13 @@ Conclusões:
   
   1. Podemos observar que, não necessariamente, o estado com maior número de casos, por região (GO, SC, PA, BA, SP) detém o maior número de óbitos (GO, RS, PA, CE, SP);
   2. Dado o ponto anteror, temos que, a letalidade do vírus varia entre os estados;
+</details>
+
+
+<details>
+  <summary>Análise do Percentual de Casos Relativo a População (págs 16 - 28):</summary>
+  
+  1. Podemos visualizar que os estados com menor população, por região, são os que detêm maior percentual de casos por população (págs 16 - 26);
+  2. De forma equivalente, tais estados estão entre os menos populosos de todo o país (pág 27);
+  3. Mesmo padrão se repete quando espandimos de uma visão regional para uma nacional (pág 28).
 </details>
